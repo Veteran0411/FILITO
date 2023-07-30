@@ -192,7 +192,7 @@ body {
     text-align: center;
     width: 100%;
     height: 100%;
-    color:#6528F7;
+    color: #6528F7;
 }
 
 #shaftLimit {
@@ -230,9 +230,11 @@ body {
     background-color: #6528F7;
     transform: translate(-10%, -80%);
 }
-.numberValues{
+
+.numberValues {
     font-family: 'Open Sans', sans-serif;
 }
+
 .cancel_button_container {
     z-index: 3;
     width: 40px;
@@ -440,10 +442,11 @@ ul {
     }
 
     #modal_answer_section {
-        grid-template-rows:  1fr 1fr 1fr 0.5fr;
+        grid-template-rows: 1fr 1fr 1fr 0.5fr;
         gap: 0.5rem;
     }
-        .footer {
+
+    .footer {
         padding-bottom: 5rem;
     }
 }
