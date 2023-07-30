@@ -89,7 +89,7 @@ function fundamental(val, D) {
         "d": -16 * Math.pow(D, 0.41),
         "e": -11 * Math.pow(D, 0.41),
         "f": -5.5 * Math.pow(D, 0.41),
-        "g": -5.5 * Math.pow(D, 0.34),
+        "g": -2.5 * Math.pow(D, 0.34),
         "h": 0,
         "i": -0.6 * Math.pow(D, 0.5),
         "j": -0.4 * Math.pow(D, 0.4),
