@@ -443,4 +443,7 @@ ul {
         grid-template-rows:  1fr 1fr 1fr 0.5fr;
         gap: 0.5rem;
     }
+        .footer {
+        padding-bottom: 5rem;
+    }
 }
