@@ -14,6 +14,7 @@ const shaftupperLimitAnswer = document.getElementById("shaftupperLimitAnswer");
 const shaftLowerLimitAnswer = document.getElementById("shaftLowerLimitAnswer");
 const holetoleranceAnswer = document.getElementById("holetoleranceAnswer");
 const shafttoleranceAnswer = document.getElementById("shafttoleranceAnswer");
+const fitValueAnswer = document.getElementById("fitValueAnswer");
 var flag=0;
 
 
@@ -96,13 +97,13 @@ function fundamental(val, D) {
         "k": -0.2 * Math.pow(D, 0.3),
         "l": -0.1 * Math.pow(D, 0.2),
         "m": (16*((0.45 * Math.cbrt(D)) + (0.001 * D))-10*((0.45 * Math.cbrt(D)) + (0.001 * D))),
-        "n": 5*Math.pow(D,0.24),
+        "n": 5*Math.pow(D,0.34),
         "o": 0,
         "p": 0,
         "q": 0,
         "r": 0,
         "s": 0,
-        "t": 16*((0.45 * Math.cbrt(D)) + (0.001 * D)) + 0.63*D,
+        "t": 16*(((0.45 * Math.cbrt(D)) + (0.001 * D))) + 0.63*D,
         "u": 0,
         "v": 0,
         "w": 0,
@@ -211,11 +212,11 @@ function Main(str) {
     }
     else{
         shaftMaxSize = (parseFloat(zeroLine) + shaftTolerance +shaft_var) ;
-        console.log("min shaft",shaftMinSize);
         console.log(" shaftTolerance",shaftTolerance);
         console.log(" shaft_var",shaft_var);
-         shaftMinSize = (parseFloat(zeroLine) + shaft_var) ;
+        shaftMinSize = (parseFloat(zeroLine) + shaft_var) ;
         console.log("max shaft",shaftMaxSize);
+        console.log("min shaft",shaftMinSize);
     }
 
 
@@ -225,9 +226,9 @@ function Main(str) {
 
     // finding fit type
     let fitType;
-    if (maxClearance > 0 && minClearance > 0) {
+    if (holeMinLimit >= shaftMaxSize) {
         fitType = "Clearance Fit";
-    } else if (maxClearance <= 0 && minClearance <= 0) {
+    } else if (shaftMinSize >holeMaxLimit) {
         fitType = "Interference Fit";
     } else {
         fitType = "Transition Fit";
@@ -249,4 +250,5 @@ function Main(str) {
     shaftLowerLimitAnswer.innerHTML=shaftMinSize.toFixed(3);
     holetoleranceAnswer.innerHTML=Math.round(holeTolerance*1000);
     shafttoleranceAnswer.innerHTML=Math.round(shaftTolerance*1000);
+    fitValueAnswer.innerHTML=fitType;
 }
