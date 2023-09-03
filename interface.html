@@ -59,26 +59,35 @@
                             <div id="tolerance">
                                 <div id="holetolerance">The Tolerance for Hole is: <br> <span id="holetoleranceAnswer"
                                         class="numberValues"></span>&nbsp;&micro;</div>
-                                <div id="shafttolerance">The Tolerance for Shaft is: <br> <span id="shafttoleranceAnswer"
-                                        class="numberValues"></span>&nbsp;&micro;</div>
+                                <div id="shafttolerance">The Tolerance for Shaft is: <br> <span
+                                        id="shafttoleranceAnswer" class="numberValues"></span>&nbsp;&micro;</div>
                             </div>
                             <div id="fitType">fit type:
                                 <span class="" id="fitValueAnswer"></span>
+                                <div id="imageTab" onclick="DisplayTwo()"> View Image</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="modal2" id="modalTwo">
+                    <div id="modalTwoClose" onclick="modalTwoClose()">
+                        x
+                    </div>
+                    <div class="container1">
+                        <div id="notify"></div>
+                        <div class="axis"></div>
+                        <div class="box box1">HOLE <span id="holeUpperLimitModalValue"
+                                class="numberValues imageValues">SOM</span> <span class="numberValues imageValues"
+                                id="holeLowerLimitModalValue">SOM</span></div>
+                        <div class="box box2" id="moveShaft">SHAFT<span class="numberValues imageValues"
+                                id="shaftUpperLimitModalValue">SOM</span> <span class="numberValues imageValues"
+                                id="shaftLowerLimitModalValue">SOM</span></div>
+                        <div class="line line1" id="line1"></div>
                     </div>
                 </div>
                 <div id="blur_Box">
                     <div id="topic_title">
                         <h1>Limits, Fits and Tolerances</h1>
-                    </div>
-                    <div class="text_container">
-                        <div class="text_title">
-                            <h4> What is a Fit ?</h4>
-                        </div>
-                        <div class="text_info">&#11049;  Relationship between the mating parts
-                            before assembly <br>
-                            &#11049;  Clearance, Transition, Interference Fits</div>
                     </div>
 
                     <div class="text_container">
@@ -111,16 +120,21 @@
 
                     <div class="text_container">
                         <div class="text_title">
-                            <h4>There are 18 grades of tolerances
+                            <h4>There are <span class="numberValues">18</span> Grades of tolerances
                             </h4>
                         </div>
                         <div class="text_info">
                             <ul>
-                                <li>&#11049; IT01 to IT04: Gauges, measuring instrument</li>
-                                <li>&#11049; IT05 to IT07: Precision Engg applications</li>
-                                <li>&#11049; IT08 to IT11: 4General Engineering</li>
-                                <li>&#11049; IT12 to IT14: For Sheet metal working</li>
-                                <li>&#11049; IT15 to IT16: Casting, General cutting work</li>
+                                <li>&#11049; <span class="numberValues">IT01</span> to <span
+                                        class="numberValues">IT04</span>: Gauges, measuring instrument</li>
+                                <li>&#11049; <span class="numberValues">IT05</span> to <span
+                                        class="numberValues">IT07</span>: Precision Engg applications</li>
+                                <li>&#11049; <span class="numberValues">IT08</span> to <span
+                                        class="numberValues">IT11</span>: 4General Engineering</li>
+                                <li>&#11049; <span class="numberValues">IT12</span> to <span
+                                        class="numberValues">IT14</span>: For Sheet metal working</li>
+                                <li>&#11049; <span class="numberValues">IT15</span> to <span
+                                        class="numberValues">IT16</span>: Casting, General cutting work</li>
                             </ul>
                         </div>
                     </div>
@@ -129,9 +143,9 @@
                         <div class="text_title">
                             <h4> Standard Tolerance Unit</h4>
                         </div>
-                        <div class="text_info">&#11049;  i = 0.45 3√D + 0.001D μm <br>
-                            &#11049;  D (mm) : Geometric mean of the lower and upper limits of a
-                             diameter step in which the dimension lies.</div>
+                        <div class="text_info">&#11049; <span class="numberValues">i = 3√D + 0.001D</span> μm <br>
+                            &#11049; D (mm) : Geometric mean of the lower and upper limits of a
+                            diameter step in which the dimension lies.</div>
                     </div>
 
 
@@ -153,21 +167,31 @@
                             suit Functional Requirements</div>
                     </div>
 
+                    <div class="text_container">
+                        <div class="text_title">
+                            <h4> What is a Fit ?</h4>
+                        </div>
+                        <div class="text_info">&#11049; Relationship between the mating parts
+                            before assembly <br>
+                            &#11049; Clearance, Transition, Interference Fits</div>
+                    </div>
 
 
 
                 </div>
                 <div class="footer">
-                    <div id="guide_section">shshshshsh</div>
+                    <div id="guide_section">
+                        <div id="guide_nanme">Under the Guidance of Prof.Jayant Kittur</div>
+                    </div>
                     <div id="team_section">
                         <div>
-                            <h4>team veterans</h4>
+                            <h4>Team veterans</h4>
                         </div>
                         <div id="team_info_section">
-                            <div>name and email</div>
-                            <div>name and email</div>
-                            <div>name and email</div>
-                            <div>name and email</div>
+                            <div>Aditya Puri</div>
+                            <div>Alwin Byali</div>
+                            <div>Manoj Patil</div>
+                            <div>Somling Hajji</div>
                         </div>
                     </div>
                 </div>
