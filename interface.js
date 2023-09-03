@@ -16,11 +16,25 @@ const holetoleranceAnswer = document.getElementById("holetoleranceAnswer");
 const shafttoleranceAnswer = document.getElementById("shafttoleranceAnswer");
 const fitValueAnswer = document.getElementById("fitValueAnswer");
 var flag = 0;
+var holeMaxLimit;
+var holeMinLimit;
+var shaftMinSize;
+var shaftMaxSize;
+var fitType;
+var zeroLine;
 
 
+var holeUpperLimitModalValue;
+var holeUpperLimitModalValueTag = document.getElementById("holeUpperLimitModalValue");
+var holeLowerLimitModalValue;
+var holeLowerLimitModalValueTag = document.getElementById("holeLowerLimitModalValue");
+var shaftUpperLimitModalValue;
+var shaftUpperLimitModalValueTag = document.getElementById("shaftUpperLimitModalValue");
+var shaftLowerLimitModalValue;
+var shaftLowerLimitModalValueTag = document.getElementById("shaftLowerLimitModalValue");
 // input element variable below
 const varChar = document.getElementById("varChar");
-const pattern = /^[0-9]{1,3}[ A-Za-z/]{1,2}[0-9]{1,}[ A-Za-z]{1,2}[0-9]{1,}$/;
+const pattern = /^[0-9]{1,3}[ H/]{1,2}[0-9]{1,}[ A-Za-z]{1,2}[0-9]{1,}$/;
 
 calculate_Icon.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -47,7 +61,7 @@ function upAndValidate() {
     // logic to code
     var errorText = document.getElementById('errorText');
     let str1 = (varChar.value).replace(/\s/g, "");
-    let str=str1.replace("/","");
+    let str = str1.replace("/", "");
     if (str == "") {
         errorText.innerHTML = "* Enter the value";
     }
@@ -183,11 +197,11 @@ function Main(str) {
     const extracted_char = str.match(/(\D+)/g);
     console.log(extracted_char)
     console.log(extracted_char)
-    const zeroLine = parseFloat(extracted_num[0]); // or basic size ,i removed parsefloat which was out
+    zeroLine = parseFloat(extracted_num[0]); // or basic size ,i removed parsefloat which was out
     const D = getDiameterValue(extracted_num[0]);
     const i = ((0.45 * Math.cbrt(D)) + (0.001 * D));
-    let hole_var = parseFloat(fundamental(extracted_char[0], D)) / 1000;
-    let shaft_var = parseFloat(fundamental(extracted_char[1], D)) / 1000;
+    hole_var = parseFloat(fundamental(extracted_char[0], D)) / 1000;
+    shaft_var = parseFloat(fundamental(extracted_char[1], D)) / 1000;
     const i_holeToleranceForm = "IT" + extracted_num[1]; // convert to string of error
     const i_holeToleranceValue = parseFloat(getItToleranceValues(i_holeToleranceForm));
     const holeTolerance = parseFloat(((parseFloat(i) * parseFloat(i_holeToleranceValue)) / 1000));
@@ -196,13 +210,13 @@ function Main(str) {
     const shaftTolerance = parseFloat(((parseFloat(i) * parseFloat(i_shaftToleranceValue)) / 1000));
 
     // calculation of limits
-    const holeMaxLimit = parseFloat(zeroLine) + holeTolerance + hole_var;  // as 1 mm is 1000 micro meter , the result of this multiplication will be micrometer
-    const holeMinLimit = parseFloat(zeroLine) + hole_var; //  + hole_var was removed zero line and fundamental deviation are in mm so converted in micro meter
+    holeMaxLimit = parseFloat(zeroLine) + holeTolerance + hole_var;  // as 1 mm is 1000 micro meter , the result of this multiplication will be micrometer
+    holeMinLimit = parseFloat(zeroLine) + hole_var; //  + hole_var was removed zero line and fundamental deviation are in mm so converted in micro meter
 
 
     // calculation for shaft
-    var shaftMinSize;
-    var shaftMaxSize
+    // var shaftMinSize;
+    // var shaftMaxSize;
     if ("a" <= extracted_char[1] && extracted_char[1] <= "h") {
         shaftMinSize = (parseFloat(zeroLine) - shaftTolerance + shaft_var);
         console.log("min shaft", shaftMinSize);
@@ -226,32 +240,78 @@ function Main(str) {
     const minClearance = holeMinLimit - shaftMaxSize;
 
     // finding fit type
-    let fitType;
+    // var fitType;
     if (holeMinLimit >= shaftMaxSize) {
         fitType = "Clearance Fit";
-    } else if (shaftMinSize > holeMaxLimit) {
+    } else if (shaftMinSize >= holeMaxLimit) {
         fitType = "Interference Fit";
     } else {
         fitType = "Transition Fit";
     }
+    holeUpperLimitModalValue = holeUpperLimitAnswer.innerHTML = extracted_char[0].toUpperCase() + extracted_num[1] + ": " + holeMaxLimit.toFixed(3);
+    holeLowerLimitModalValue = holeLowerLimitAnswer.innerHTML = extracted_char[0].toUpperCase() + extracted_num[1] + ": " + holeMinLimit.toFixed(3);
+    shaftUpperLimitModalValue = shaftupperLimitAnswer.innerHTML = extracted_char[1] + extracted_num[2] + ": " + shaftMaxSize.toFixed(3);
+    shaftLowerLimitModalValue = shaftLowerLimitAnswer.innerHTML = extracted_char[1] + extracted_num[2] + ": " + shaftMinSize.toFixed(3);
 
-    // console.log(`Limits for the hole: ${holeMinLimit} mm - ${holeMaxLimit} mm`);
-
-    // console.log(`Limits for the shaft: ${shaftMinSize} mm - ${shaftMaxSize} mm`);
-
-    // console.log(`Fit type: ${fitType}`);
-
-    // console.log(`Tolerance for hole  is ${holeTolerance * 1000} μm`);
-
-    // console.log(`Tolerance for shaft  is ${shaftTolerance * 1000} μm`);
-
-    holeUpperLimitAnswer.innerHTML = extracted_char[0].toUpperCase()+extracted_num[1]+": "+holeMaxLimit.toFixed(3);
-    holeLowerLimitAnswer.innerHTML = extracted_char[0].toUpperCase()+extracted_num[1]+": "+holeMinLimit.toFixed(3);
-    shaftupperLimitAnswer.innerHTML =extracted_char[1]+extracted_num[2]+": "+shaftMaxSize.toFixed(3);
-    shaftLowerLimitAnswer.innerHTML =extracted_char[1]+extracted_num[2]+": "+shaftMinSize.toFixed(3);
     holetoleranceAnswer.innerHTML = Math.round(holeTolerance * 1000);
     // holetoleranceAnswer.innerHTML = Math.ceil(holeTolerance * 1000);
     shafttoleranceAnswer.innerHTML = Math.round(shaftTolerance * 1000);
     // shafttoleranceAnswer.innerHTML = Math.ceil(shaftTolerance * 1000);
     fitValueAnswer.innerHTML = fitType;
+
+    // graphic js
+    console.log("shft var is", shaft_var)
+
+
+}
+var modalTwo = document.getElementById("modalTwo");
+var moveShaft = document.getElementById("moveShaft");
+var line1 = document.getElementById("line1");
+var shaftUpperDeviate;
+var shaftLowerDeviate;
+var notify = document.getElementById("notify");
+function DisplayTwo() {
+    notify.innerText = "";
+    line1.style.display = "block";
+    shaftUpperDeviate = zeroLine - shaftMaxSize;
+    shaftLowerDeviate = zeroLine - shaftMinSize;
+    modalTwo.style.display = "block";
+    holeUpperLimitModalValueTag.innerHTML = holeUpperLimitModalValue;
+    holeLowerLimitModalValueTag.innerHTML = holeLowerLimitModalValue;
+    shaftUpperLimitModalValueTag.innerHTML = shaftUpperLimitModalValue;
+    shaftLowerLimitModalValueTag.innerHTML = shaftLowerLimitModalValue;
+    moveShaft.style.height = "50px";
+    if ((shaftUpperDeviate) >= 0) {
+        // moveShaft.style.transform=`translate(30%,${shaftUpperDeviate*1000}px)`;
+        // line1.style.height=`${shaftUpperDeviate*1000}px`
+        moveShaft.style.transform = `translate(30%,${50}px)`;
+        line1.style.height = `${50}px`
+    }
+    else {
+        console.log("else part excecuted")
+        if (shaftMinSize >= holeMaxLimit) {
+            console.log("interferences fit")
+            console.log(shaftLowerDeviate);
+            // moveShaft.style.transform=`translate(30%,${(shaftUpperDeviate*1000)}px)`;
+            // line1.style.transform="translate(30%,-100%)"
+            // line1.style.height=`calc(${Math.abs(shaftUpperDeviate)*1000}px - 50px)`
+
+            moveShaft.style.transform = `translate(30%,-100px)`;
+            line1.style.transform = "translate(30%,-100%)"
+            line1.style.height = `calc(100px - 50px)`
+        }
+        else {
+            line1.style.display = "none";
+            console.log("transistion fit");
+            notify.innerText = "*The minimum of both shaft deviations is considered as optimal";
+            // moveShaft.style.transform=`translate(30%,${(shaftUpperDeviate*1000)}px)`;
+            moveShaft.style.transform = `translate(30%,-102%)`;
+            moveShaft.style.height = "30px";
+            line1.style.transform = "translate(30%,-100%)";
+            // line1.style.height=`calc(${(Math.min(Math.abs(shaftLowerDeviate),Math.abs(shaftUpperDeviate)))*1000}px - 50 px)`
+        }
+    }
+}
+function modalTwoClose() {
+    modalTwo.style.display = "none";
 }
