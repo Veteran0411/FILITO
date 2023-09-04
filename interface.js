@@ -303,7 +303,7 @@ function DisplayTwo() {
         else {
             line1.style.display = "none";
             console.log("transistion fit");
-            notify.innerText = "*The minimum of both shaft deviations is considered as optimal";
+            notify.innerText = "*The shaft limit closer to the zero line is selected as fundamental deviation";
             // moveShaft.style.transform=`translate(30%,${(shaftUpperDeviate*1000)}px)`;
             moveShaft.style.transform = `translate(30%,-102%)`;
             moveShaft.style.height = "30px";
