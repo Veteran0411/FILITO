@@ -7,7 +7,6 @@ const cancel_button = document.getElementById("cancel_button");
 const modal_answer_section = document.getElementById("modal_answer_section");
 const varCharLabel = document.getElementById("varCharLabel");
 const holeLimit = document.getElementById("holeLimit");
-
 const holeUpperLimitAnswer = document.getElementById("holeUpperLimitAnswer");
 const holeLowerLimitAnswer = document.getElementById("holeLowerLimitAnswer");
 const shaftupperLimitAnswer = document.getElementById("shaftupperLimitAnswer");
@@ -22,7 +21,7 @@ var shaftMinSize;
 var shaftMaxSize;
 var fitType;
 var zeroLine;
-
+var submit_btn=document.getElementById("submit_btn");
 
 var holeUpperLimitModalValue;
 var holeUpperLimitModalValueTag = document.getElementById("holeUpperLimitModalValue");
@@ -56,9 +55,9 @@ cancel_button_container.addEventListener('click', () => {
     errorText.innerHTML = " ";
 
 })
-
-function upAndValidate() {
+submit_btn.addEventListener("click",function(e){
     // logic to code
+    e.preventDefault();
     var errorText = document.getElementById('errorText');
     let str1 = (varChar.value).replace(/\s/g, "");
     let str = str1.replace("/", "");
@@ -81,13 +80,12 @@ function upAndValidate() {
             console.error(e)
         }
     } else {
-        errorText.innerHTML = "* Enter valid value in specified form";
-        console.log("did'nt execute")
+        errorText.innerHTML = "* Enter valid input";
     }
-}
+})
 
 function labelUP() {
-    varCharLabel.style.transform = "translate(-55px,-30px)";
+    varCharLabel.style.transform = "translate(-55px,-20px)";
     varCharLabel.style.fontSize = "1.5rem";
 }
 
@@ -315,3 +313,8 @@ function DisplayTwo() {
 function modalTwoClose() {
     modalTwo.style.display = "none";
 }
+
+// take input as type of fit.
+// drop down menu.
+// form.(submit)
+// ll / ul H7t5
