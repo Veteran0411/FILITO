@@ -31,12 +31,96 @@
                             <form id="formContainer">
                                 <div id="input_container">
                                     <div>
-                                        numbe input
+                                        <h2 class="label_input">Number input</h2>
+                                        <input type="number" id="number_input" placeholder="Enter the number" required>
                                     </div>
                                     <div>
-                                        <input type="text" name="" id="varChar" onfocus="labelUP()" required>
-                                        <span id="errorText"></span>
-                                        <h4 id="varCharLabel" onclick="labelUP()">Enter the code (e.g 6H6/g5)</h4>
+                                        <h2 class="label_input">Select the code (e.g 6H6/g5)</h2>
+                                        <select class="dropdown">
+                                            <option value="H6g5">H6/g5</option>
+                                            <option value="H6h5">H6/h5</option>
+                                            <option value="H6j">H6/j</option>
+                                            <option value="H6k5">H6/k5</option>
+                                            <option value="H6m5">H6/m5</option>
+                                            <option value="H6n5">H6/n5</option>
+                                            <option value="H6p5">H6/p5</option>
+                                            <option value="H7f6">H7/f6</option>
+                                            <option value="H7g6">H7/g6</option>
+                                            <option value="H7h6">H7/h6</option>
+                                            <option value="H7j">H7/j</option>
+                                            <option value="H7k6">H7/k6</option>
+                                            <option value="H7m6">H7/m6</option>
+                                            <option value="H7n6">H7/n6</option>
+                                            <option value="H7p6">H7/p6</option>
+                                            <option value="H7r6">H7/r6</option>
+                                            <option value="H7s6">H7/s6</option>
+                                            <option value="H7t6">H7/t6</option>
+                                            <option value="H7u6">H7/u6</option>
+                                            <option value="H7x6">H7/x6</option>
+                                            <option value="H8e7">H8/e7</option>
+                                            <option value="H8f7">H8/f7</option>
+                                            <option value="H8h7">H8/h7</option>
+                                            <option value="H8j">H8/j</option>
+                                            <option value="H8k7">H8/k7</option>
+                                            <option value="H8m7">H8/m7</option>
+                                            <option value="H8s7">H8/s7</option>
+                                            <option value="H8u7">H8/u7</option>
+                                            <option value="H8d8">H8/d8</option>
+                                            <option value="H8e8">H8/e8</option>
+                                            <option value="H8f8">H8/f8</option>
+                                            <option value="H8h8">H8/h8</option>
+                                            <option value="H9d8">H9/d8</option>
+                                            <option value="H9e8">H9/e8</option>
+                                            <option value="H9f8">H9/f8</option>
+                                            <option value="H9h8">H9/h8</option>
+                                            <option value="H10b9">H10/b9</option>
+                                            <option value="H10c9">H10/c9</option>
+                                            <option value="H10d9">H10/d9</option>
+                                            <option value="H10e9">H10/e9</option>
+                                            <option value="H10h9">H10/h9</option>
+                                            <option value="H11b11">H11/b11</option>
+                                            <option value="H11c11">H11/c11</option>
+                                            <option value="H11d10">H11/d10</option>
+                                            <option value="H11h10">H11/h10</option>
+                                            <option value="G6h5">G6/h5</option>
+                                            <option value="H6h5">H6/h5</option>
+                                            <option value="S6h5">S6/h5</option>
+                                            <option value="K6h5">K6/h5</option>
+                                            <option value="M6h5">M6/h5</option>
+                                            <option value="N6h5">N6/h5</option>
+                                            <option value="P6h5">P6/h5</option>
+                                            <option value="F7h6">F7/h6</option>
+                                            <option value="G7h6">G7/h6</option>
+                                            <option value="H7h6">H7/h6</option>
+                                            <option value="S7h6">S7/h6</option>
+                                            <option value="K7h6">K7/h6</option>
+                                            <option value="M7h6">M7/h6</option>
+                                            <option value="N7h6">N7/h6</option>
+                                            <option value="P7h6">P7/h6</option>
+                                            <option value="R7h6">R7/h6</option>
+                                            <option value="S7h6">S7/h6</option>
+                                            <option value="T7h6">T7/h6</option>
+                                            <option value="U7h6">U7/h6</option>
+                                            <option value="X7h6">X7/h6</option>
+                                            <option value="E8h7">E8/h7</option>
+                                            <option value="F8h7">F8/h7</option>
+                                            <option value="H8h7">H8/h7</option>
+                                            <option value="D9h8">D9/h8</option>
+                                            <option value="E9h8">E9/h8</option>
+                                            <option value="F9h8">F9/h8</option>
+                                            <option value="H9h8">H9/h8</option>
+                                            <option value="E8h9">E8/h9</option>
+                                            <option value="F8h9">F8/h9</option>
+                                            <option value="H8h9">H8/h9</option>
+                                            <option value="D9h9">D9/h9</option>
+                                            <option value="E9h9">E9/h9</option>
+                                            <option value="F9h9">F9/h9</option>
+                                            <option value="H9h9">H9/h9</option>
+                                            <option value="B11h9">B11/h9</option>
+                                            <option value="C10h9">C10/h9</option>
+                                            <option value="D10h9">D10/h9</option>
+                                            <option value="H10h9">H10/h9</option>
+                                            </select>
                                     </div>
                                 </div>
                                 <div id="submit_button_container">
