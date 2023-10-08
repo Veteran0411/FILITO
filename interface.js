@@ -66,7 +66,7 @@ submit_btn.addEventListener("click",function(e){
     // if (str == "") {
     //     errorText.innerHTML = "* Enter the value";
     // }
-    let str=number_input.value+dropdown.value;
+    let str=(number_input.value).toString()+dropdown.value;
     if (pattern.test(str)) {
         modal_answer_section.style.transform = "translate(0%,0%)";
         modal_answer_section.style.borderRadius = "0%";
