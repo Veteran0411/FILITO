@@ -23,6 +23,8 @@ var fitType;
 var zeroLine;
 var submit_btn=document.getElementById("submit_btn");
 
+var dropdown=document.getElementById("dropdown");
+var number_input=document.getElementById("number_input");
 var holeUpperLimitModalValue;
 var holeUpperLimitModalValueTag = document.getElementById("holeUpperLimitModalValue");
 var holeLowerLimitModalValue;
@@ -59,12 +61,13 @@ submit_btn.addEventListener("click",function(e){
     // logic to code
     e.preventDefault();
     var errorText = document.getElementById('errorText');
-    let str1 = (varChar.value).replace(/\s/g, "");
-    let str = str1.replace("/", "");
-    if (str == "") {
-        errorText.innerHTML = "* Enter the value";
-    }
-    else if (pattern.test(str)) {
+    // let str1 = (varChar.value).replace(/\s/g, "");
+    // let str = str1.replace("/", "");
+    // if (str == "") {
+    //     errorText.innerHTML = "* Enter the value";
+    // }
+    let str=number_input.value+dropdown.value;
+    if (pattern.test(str)) {
         modal_answer_section.style.transform = "translate(0%,0%)";
         modal_answer_section.style.borderRadius = "0%";
         cancel_button_container.style.color = "white";
